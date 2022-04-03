@@ -1,17 +1,17 @@
 module.exports = {
     "bot": {
-        "version": "1.3.2", // Current bot version
+        "version": "0.9.0", // Current bot version
         "setNewAvatar": false, // Bot does crash if avatar gets changed too often! If you set a new image, set the value to true and the bot sets the new avatar. After change the value back to false!!!!
         "avatar":"./avatar.png", // Set bot avatar img -> local file path
-        "gameMessage":"bot game message | +help", // Message under the bot name in the discord user list
+        "gameMessage":"CrypTip Bot | type $help to learn more", // Message under the bot name in the discord user list
         "adminMode": false, // If enabled the bot only accepts commands from admins
         "errorLogging": true, // Enable error logging to file discordbot.log
-        "commandPrefix": "+", // Bot prefix to trigger the bot <- if symbol changed it needs to get allowed on check.js
+        "commandPrefix": "$", // Bot prefix to trigger the bot <- if symbol changed it needs to get allowed on check.js
         "cooldownTime": 10, // Cooldown a user need to wait between commands in seconds
         "activeUserTime": 600, // Seconds a user counts as active for rain online users
         "botID": "XXX", // Bot Discord ID - important else it react to own messages 
-        "adminIDs": [ "XXX", "XXX", "XXX" ], // This discrod user IDs are able to use admin commands and bypass cooldowns
-        "moderatorIDs": [ "XXX" ], // This discrod user IDs are able to use moderator commands and bypass cooldowns
+        "adminIDs": [ "XXX", "XXX", "XXX" ], // This discord user IDs are able to use admin commands and bypass cooldowns
+        "moderatorIDs": [ "XXX" ], // This discord user IDs are able to use moderator commands and bypass cooldowns
         "vipGroupName": "Dev Team", // Users of this group are able to use vip commands and bypass cooldowns
         "respondChannelIDs": [ "XXX" ], // Discord server channel IDs the bot does listen to
         "commandIgnor": ["battle","cversion","destroy","gift","kill","lock","me","rez","top","use","me","cstart","cstop","cstart","jackpot","summary","shop","activate","mention","claim"], // commands to ignor because of other bots
@@ -59,16 +59,16 @@ module.exports = {
         "transactionFee": 0.01, // Fee taken for a transaction a user makes - Change value also on help command
         "minWithdrawalValue": 0.00000001, // Minimum value for withdrawal
         "minTipValue": 0.00000001, // Minimum value for tip 
-        "maxRainRandomUsers": 15, // Please take care as the bot can crash if the value is to big as for each user a database query is fired!
+        "maxRainRandomUsers": 50, // Please take care as the bot can crash if the value is to big as for each user a database query is fired!
         "donateAddress":"XXX" // Address for donations
     },
     "coinPrice":{ // If enabled the current coin price will be saved next to each transaction made from the bot and into the price history database table
         "enabled": false,
-        "cronTime": 1800, // Cron time in seconds
+        "cronTime": 300, // Cron time in seconds
         "apiService": "coinmarketcap", // define the api to use -> The coin must be listed on the api! Current possible values are "coinmarketcap" and "cryptocompare" -> you need to register to get a api key
         "apiKey": "XXX",
         "coinSymbol": "Symbol", // e.g. BTC
-        "currency": "EUR" // Cent prices in this currency
+        "currency": "USD" // Cent prices in this currency
     },
     "staking":{
         // Please hold this option disabled and configure it before!
@@ -244,49 +244,49 @@ module.exports = {
         },
         "help": {
             "title":"Bot commands",
-            "registerTitle":"+register || +r",
+            "registerTitle":"$register || $r",
             "registerValue":"Register an account with the bot.",
-            "profileTitle":"+profile || +p",
+            "profileTitle":"$profile || $p",
             "profileValue":"Display account information.",
-            "balanceTitle":"+balance || +b",
+            "balanceTitle":"$balance || $b",
             "balanceValue":"Display your current balance.",
-            "depositTitle":"+deposit || +d",
+            "depositTitle":"$deposit || $d",
             "depositValue":"Get your deposit address.",
-            "withdrawTitle":"+withdraw <address> <amount> || +w <address> <amount>",
+            "withdrawTitle":"$withdraw <address> <amount> || $w <address> <amount>",
             "withdrawValue":"Withdraw balance to an address (0.01 Symbol transaction fee will be added on top of the amount).",
-            "stakeTitle":"+stake <amount>",
+            "stakeTitle":"$stake <amount>",
             "stakeValue":"Convert balance to stake balance for receiving stake pool payouts. (Its always possible to add balance but it will reset the unstake timer)",
-            "unstakeTitle":"+unstake <amount>",
+            "unstakeTitle":"$unstake <amount>",
             "unstakeValue":"Convert balance to normal balance (Only once within 24 hours if no stake/unstake has been done).",
-            "tipTitle":"+tip <@username> <amount>",
+            "tipTitle":"$tip <@username> <amount>",
             "tipValue":"Tip a user from Discord.",
-            "rainTitle":"+rain all/online/random <amount> <userCount>",
+            "rainTitle":"$rain all/online/random <amount> <userCount>",
             "rainValue":"(all) Tip amount divided by total user count. / (online) Tip amount divided by active users. / (random) Tip amount divided by random user count.",
-            "dropTitle":"+drop phrase/react <amount> <timeInSeconds> <30 letter phrase>",
+            "dropTitle":"$drop phrase/react <amount> <timeInSeconds> <30 letter phrase>",
             "dropValue":"(phrase) Send coins to all users that reply with the asked phrase. / (react) Send coins to all users that react with the asked icon.", 
-            "historyTitle":"+history deposits/withdrawals/payments || +history d/w/p",
+            "historyTitle":"$history deposits/withdrawals/payments || $history d/w/p",
             "historyValue":"(deposits) Show your latest deposits. / (withdrawals) Show your latest withdrawals. / (payments) Show your latest payments.",
-            "updateTitle":"+update || +u",
+            "updateTitle":"$update || $u",
             "updateValue":"Update your username.",
-            "donateTitle":"+donate",
+            "donateTitle":"$donate",
             "donateValue":"Show the bot creators tip address.",
-            "notifyTitle": "+notify <on/off>",
+            "notifyTitle": "$notify <on/off>",
             "notifyValue": "Enable or disable to get mentioned by the bot.",
-            "versionTitle": "+version || +v",
+            "versionTitle": "$version || $v",
             "versionValue": "Get current bot and wallet information.",
             "admin": {
                 "title":"Admin commands",
-                "startStopTitle":"+start / +stop",
+                "startStopTitle":"$start / $stop",
                 "startStopValue":"Enable/Disable all bot commands while the bot is running.",
-                "getDepositsTitle":"+getdeposits || +gd",
+                "getDepositsTitle":"$getdeposits || $gd",
                 "getDepositsValue":"Manually get latest transactions from wallet and update confirmations.",
-                "creditDepositsTitle":"+creditdeposits || +cd",
+                "creditDepositsTitle":"$creditdeposits || $cd",
                 "creditDepositsValue":"Manually check confiramtions on database and credit deposits if they have min confirmations.",
-                "getStakesTitle":"+getstakes || +gs",
+                "getStakesTitle":"$getstakes || $gs",
                 "getStakesValue":"Manually check transactions on database if they are stakes.",
-                "creditStakesTitle":"+creditstakes || +cs",
+                "creditStakesTitle":"$creditstakes || $cs",
                 "creditStakesValue":"Manually credit stakes to users.",
-                "clearTitle":"+clear || +c",
+                "clearTitle":"$clear || $c",
                 "clearValue":"Delete all visible messages from chat."
             }
         },
@@ -296,7 +296,7 @@ module.exports = {
         },
         "history": {
             "deposits": {
-                "no":"No deposits to display. Please use **+deposit** to display your deposit address.",
+                "no":"No deposits to display. Please use **$deposit** to display your deposit address.",
                 "view":"View transactions online",
                 "title":"Deposit history (latest first)",
                 "credited":"credited",
@@ -309,7 +309,7 @@ module.exports = {
                 "description2":"seconds."
             },
             "withdrawals": {
-                "no":"No withdrawals to display. Please use **+withdraw <address> <amount>** to withdraw your balance.",
+                "no":"No withdrawals to display. Please use **$withdraw <address> <amount>** to withdraw your balance.",
                 "title":"Withdrawal history (latest first)",
                 "description":"Please be patient. It may take a few minutes until a new transaction appears in the blockexplorer."
             },
@@ -346,8 +346,8 @@ module.exports = {
             "randommax1": "users can receive a rain at once. Please use a lower number."
         },
         "register": {
-            "already":"You are already registered. \nPlease type **+profile** to see your information.",
-            "registered":"Please type **+profile** to see your information.",
+            "already":"You are already registered. \nPlease type **$profile** to see your information.",
+            "registered":"Please type **$profile** to see your information.",
             "title":"Successfully registered"
         },
         "tip": {
@@ -366,7 +366,7 @@ module.exports = {
         },
         "update": {
             "title":"Username updated",
-            "description":"Please type **+profile** to see your information.",
+            "description":"Please type **$profile** to see your information.",
         },
         "withdraw": {
             "notvalid":"The specified payout address is not valid.",
